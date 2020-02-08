@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.highcharts-container,
+  .highcharts-container svg {
+     width: 100% !important;
+     height: 100% !important;
+}
+
+/* ---- Layout ---- */
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $primary;
+
+  display: grid;
+  grid-template-areas:
+    "header"
+    "content"
+}
+
+.header {
+  grid-area: header;
+  display: flex;
+  height: 4rem;
+  padding: 0 1rem;
+  background-color: $p-dark;
+  color: $white;
+}
+
+.content {
+  grid-area: content;
+  height: 100vh;
+  background-color: $p-light;
+}
+
+/* ---- Grid System ---- */
+.container {
+  max-width: 100%;
+  margin: 0 1rem;
+  display: flex;
+} 
+
+.col {
+  background-color: $white;
+  border: $white 2px solid;
+  border-radius: 8px;
+}
+
+@for $width from 1 through $columns {
+  .col-#{$width} {
+    flex-basis: $width / $columns * 100%;
+  }  
+}
+
+@media (max-width: $bp-tablet) {
+  @for $width from 1 through $columns {
+    .col-#{$width} {
+      flex-basis: 66%;
+    }  
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  @for $width from 1 through $columns {
+    .col-#{$width} {
+      flex-basis: 100%;
+    }  
+  }
+}
